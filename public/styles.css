@@ -1,0 +1,51 @@
+:root {
+  --primary-color: #211458;
+  --secondary-color: #f4f4f4;
+  --links-color: #3600cc;
+  --padding: 1.25rem;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: var(--padding);
+}
+
+h1,
+h2 {
+  color: var(--primary-color);
+}
+
+.api-links {
+  background: #fff;
+  padding: var(--padding);
+  margin-top: 1.25rem;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.api-links ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.api-links li {
+  margin-bottom: 0.625rem;
+}
+
+.api-links a {
+  color: var(--links-color);
+  text-decoration: none;
+}
+
+.api-links a:hover {
+  text-decoration: underline;
+}
