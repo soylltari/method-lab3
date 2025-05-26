@@ -3,9 +3,20 @@ const express = require("express"); // Web framework
 const morgan = require("morgan"); // HTTP request logger
 const cors = require("cors"); // Cross-Origin Resource Sharing
 const path = require("path"); // File and directory path utilities
+const mongoose = require("mongoose"); // MongoDB object modeling tool
 const apiRouter = require("./routers/api");
 const pagesRouter = require("./routers/pages");
 const config = require("./utils/config");
+
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(config.MONGO_URI);
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.log(`MongoDB Connection Error: ${error.message}`);
+    console.log("Application will continue without database connection.");
+  }
+};
 
 const app = express();
 
@@ -24,7 +35,9 @@ app.use((req, res) => {
 });
 
 const PORT = config.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-  console.log(`API available at http://localhost:${PORT}/api/`);
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`API available at http://localhost:${PORT}/api/`);
+  });
 });
