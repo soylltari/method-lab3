@@ -11,7 +11,11 @@ This is JavaScript version of [this](https://github.com/KPI-FICT-MTSD/lab-03-sta
 git clone https://github.com/soylltari/method-lab3
 ```
 
-3. Download packages:
+3. Set up project:
+
+   - Copy .env.example to .env
+
+   - Download packages
 
 ```bash
 npm install
