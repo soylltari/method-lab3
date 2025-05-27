@@ -1,4 +1,3 @@
-require("dotenv").config(); // Load environment variables from .env file
 const express = require("express"); // Web framework
 const morgan = require("morgan"); // HTTP request logger
 const cors = require("cors"); // Cross-Origin Resource Sharing
@@ -38,6 +37,5 @@ const PORT = config.PORT || 3000;
 connectDB().then(() => {
   app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
-    console.log(`API available at http://localhost:${PORT}/api/`);
   });
 });
