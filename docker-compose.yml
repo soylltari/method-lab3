@@ -1,9 +1,10 @@
 services:
+  # Service for Node.js application
   app:
     image: spaceship-js-layers
     build:
       context: .
-      dockerfile: Dockerfile.layers
+      dockerfile: Dockerfile.layers # Any desired dockerfiles can be selected
     ports:
       - "3000:3000"
     depends_on:
@@ -11,18 +12,20 @@ services:
     env_file:
       - .env
     volumes:
+      # For development: map local files to container (hot-reload)
       - ./src:/app/src
       - ./public:/app/public
     restart: unless-stopped
 
-  # Сервіс для MongoDB
+  # Service MongoDB
   mongo:
     image: mongo:latest
     ports:
       - "27017:27017"
     volumes:
+      # Saving data between restarts
       - mongodb_data:/data/db
     restart: unless-stopped
 
 volumes:
-  mongodb_data:
+  mongodb_data: # Defining a volume to save MongoDB data
