@@ -95,4 +95,6 @@ addShipForm.addEventListener("submit", async (event) => {
   await addShip(shipData);
 });
 
+console.log("Mariia Sribranets");
+
 fetchShips();
